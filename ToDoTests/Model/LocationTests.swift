@@ -53,6 +53,14 @@ class LocationTests: XCTestCase {
         performNotEqualTestWith(firstName: "Foo", secondName: "Foo", firstLongLat: (1.0, 0.0), secondLongLat: (0.0, 0.0))
     }
     
+    func test_Locations_WhenOnlyHasCoordinate_AreNotEqual() {
+        performNotEqualTestWith(firstName: "Foo", secondName: "Foo", firstLongLat: (0.0, 0.0), secondLongLat: nil)
+    }
+    
+    func test_Locations_WhenNamesDiffer_AreNotEqual() {
+        performNotEqualTestWith(firstName: "Foo", secondName: "Bar", firstLongLat: nil, secondLongLat: nil)
+    }
+    
     func performNotEqualTestWith(firstName: String,
                                  secondName: String,
                                  firstLongLat: (Double, Double)?,
