@@ -18,6 +18,7 @@
 		7466D54D1F148393005746D0 /* LocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7466D54C1F148393005746D0 /* LocationTests.swift */; };
 		7466D54F1F148763005746D0 /* ItemManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7466D54E1F148763005746D0 /* ItemManagerTests.swift */; };
 		7466D5511F14883A005746D0 /* ItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7466D5501F14883A005746D0 /* ItemManager.swift */; };
+		747126DE1F1C575300F270B2 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747126DD1F1C575300F270B2 /* ItemCell.swift */; };
 		7495006B1F1864FC0009FE16 /* ItemListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7495006A1F1864FC0009FE16 /* ItemListDataProvider.swift */; };
 		7495006D1F18696D0009FE16 /* ItemListDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7495006C1F18696D0009FE16 /* ItemListDataProviderTests.swift */; };
 		74E8B1601F1722B30020C009 /* ItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E8B15F1F1722B30020C009 /* ItemListViewController.swift */; };
@@ -48,6 +49,7 @@
 		7466D54C1F148393005746D0 /* LocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTests.swift; sourceTree = "<group>"; };
 		7466D54E1F148763005746D0 /* ItemManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemManagerTests.swift; sourceTree = "<group>"; };
 		7466D5501F14883A005746D0 /* ItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemManager.swift; sourceTree = "<group>"; };
+		747126DD1F1C575300F270B2 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		7495006A1F1864FC0009FE16 /* ItemListDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListDataProvider.swift; sourceTree = "<group>"; };
 		7495006C1F18696D0009FE16 /* ItemListDataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListDataProviderTests.swift; sourceTree = "<group>"; };
 		74E8B15D1F1721B00020C009 /* ItemListViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListViewControllerTest.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			children = (
 				74E8B15F1F1722B30020C009 /* ItemListViewController.swift */,
 				7495006A1F1864FC0009FE16 /* ItemListDataProvider.swift */,
+				747126DD1F1C575300F270B2 /* ItemCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				7495006B1F1864FC0009FE16 /* ItemListDataProvider.swift in Sources */,
 				7460A2901F13209300506C9C /* AppDelegate.swift in Sources */,
 				7466D54B1F1481E8005746D0 /* Location.swift in Sources */,
+				747126DE1F1C575300F270B2 /* ItemCell.swift in Sources */,
 				7460A2B41F13269400506C9C /* ToDoItem.swift in Sources */,
 				74E8B1601F1722B30020C009 /* ItemListViewController.swift in Sources */,
 			);
