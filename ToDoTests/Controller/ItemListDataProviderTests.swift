@@ -23,6 +23,7 @@ class ItemListDataProviderTests: XCTestCase {
         
         tableView = UITableView()
         tableView.dataSource = sut
+        tableView.delegate = sut
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         controller = storyboard.instantiateViewController(withIdentifier: "ItemListViewController") as! ItemListViewController
@@ -78,9 +79,7 @@ class ItemListDataProviderTests: XCTestCase {
     }
     
     func test_CellForRow_DequeuesCellFromTableView() {
-        let mockTableView = MockTableView()
-        mockTableView.dataSource = sut
-        mockTableView.register(ItemCell.self, forCellReuseIdentifier: "ItemCell")
+        let mockTableView = MockTableView.mockTableView(withDataSource: sut)
         
         sut.itemManager?.add(ToDoItem(title: "Foo"))
         mockTableView.reloadData()
@@ -91,9 +90,7 @@ class ItemListDataProviderTests: XCTestCase {
     }
     
     func test_CellForRow_CallsConfigCell() {
-        let mockTableView = MockTableView()
-        mockTableView.dataSource = sut
-        mockTableView.register(MockItemCell.self, forCellReuseIdentifier: "ItemCell")
+        let mockTableView = MockTableView.mockTableView(withDataSource: sut)
         
         let item = ToDoItem(title: "Foo")
         sut.itemManager?.add(item)
@@ -105,12 +102,7 @@ class ItemListDataProviderTests: XCTestCase {
     }
     
     func test_CellForRow_InSectionTwo_CallsConfigCellWithDoneItem() {
-        let mockTableView = MockTableView(
-            frame: CGRect(x: 0, y: 0, width: 320, height: 480),
-            style: .plain
-        )
-        mockTableView.dataSource = sut
-        mockTableView.register(MockItemCell.self, forCellReuseIdentifier: "ItemCell")
+        let mockTableView = MockTableView.mockTableView(withDataSource: sut)
         
         sut.itemManager?.add(ToDoItem(title: "Foo"))
         
@@ -124,6 +116,48 @@ class ItemListDataProviderTests: XCTestCase {
         XCTAssertEqual(cell.catchedItem, second)
     }
     
+    func test_DeleteButton_InFirstSection_ShowsTitleCheck() {
+        let path = IndexPath(row: 0, section: 0)
+        let deleteButtonTitle = tableView.delegate?.tableView?(
+            tableView,
+            titleForDeleteConfirmationButtonForRowAt: path
+        )
+        XCTAssertEqual(deleteButtonTitle, "Check")
+    }
+    
+    func test_DeleteButton_InSecondSection_ShowsTitleUncheck() {
+        let path = IndexPath(row: 0, section: 1)
+        let deleteButtonTitle = tableView.delegate?.tableView?(tableView, titleForDeleteConfirmationButtonForRowAt: path)
+        
+        XCTAssertEqual(deleteButtonTitle, "Uncheck")
+    }
+    
+    func test_CheckingAnItem_ChecksInTheItemManager() {
+        sut.itemManager?.add(ToDoItem(title: "Foo"))
+        
+        let path = IndexPath(row: 0, section: 0)
+        tableView.dataSource?.tableView?(tableView, commit: .delete, forRowAt: path)
+        
+        XCTAssertEqual(sut.itemManager?.toDoCount, 0)
+        XCTAssertEqual(sut.itemManager?.doneCount, 1)
+        XCTAssertEqual(tableView.numberOfRows(inSection: 0), 0)
+        XCTAssertEqual(tableView.numberOfRows(inSection: 1), 1)
+    }
+    
+    func test_UnchkingAnItem_UncheckstInTheItemManager() {
+        sut.itemManager?.add(ToDoItem(title: "First"))
+        sut.itemManager?.checkItem(at: 0)
+        tableView.reloadData()
+        
+        let path = IndexPath(row: 0, section: 1)
+        tableView.dataSource?.tableView?(tableView, commit: .delete, forRowAt: path)
+        
+        XCTAssertEqual(sut.itemManager?.toDoCount, 1)
+        XCTAssertEqual(sut.itemManager?.doneCount, 0)
+        XCTAssertEqual(tableView.numberOfRows(inSection: 0), 1)
+        XCTAssertEqual(tableView.numberOfRows(inSection: 1), 0)
+    }
+    
 }
 
 extension ItemListDataProviderTests {
@@ -134,6 +168,14 @@ extension ItemListDataProviderTests {
         override func dequeueReusableCell(withIdentifier identifier: String, for indexPath: IndexPath) -> UITableViewCell {
             cellGotDequeued =  true
             return super.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        }
+        
+        class func mockTableView(withDataSource dataSource: UITableViewDataSource) -> MockTableView {
+            let frame = CGRect(x: 0, y: 0, width: 320, height: 480)
+            let mockTableView = MockTableView(frame: frame, style: .plain)
+            mockTableView.dataSource = dataSource
+            mockTableView.register(MockItemCell.self, forCellReuseIdentifier: "ItemCell")
+            return mockTableView
         }
     }
     

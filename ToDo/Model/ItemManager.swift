@@ -44,4 +44,9 @@ struct ItemManager {
         doneItems.append(item)
     }
     
+    mutating func uncheckItem(at index: Int) {
+        let item = doneItems.remove(at: index)
+        toDoItems.append(item)
+    }
+    
 }
