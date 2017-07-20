@@ -18,7 +18,10 @@
 		7466D54D1F148393005746D0 /* LocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7466D54C1F148393005746D0 /* LocationTests.swift */; };
 		7466D54F1F148763005746D0 /* ItemManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7466D54E1F148763005746D0 /* ItemManagerTests.swift */; };
 		7466D5511F14883A005746D0 /* ItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7466D5501F14883A005746D0 /* ItemManager.swift */; };
+		746F946F1F2053EA00A45E70 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 746F946E1F2053EA00A45E70 /* MapKit.framework */; };
 		747126DE1F1C575300F270B2 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 747126DD1F1C575300F270B2 /* ItemCell.swift */; };
+		7476B1031F204CE8002F8BCC /* DetailViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7476B1021F204CE8002F8BCC /* DetailViewControllerTests.swift */; };
+		7476B1051F204D95002F8BCC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7476B1041F204D95002F8BCC /* DetailViewController.swift */; };
 		7495006B1F1864FC0009FE16 /* ItemListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7495006A1F1864FC0009FE16 /* ItemListDataProvider.swift */; };
 		7495006D1F18696D0009FE16 /* ItemListDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7495006C1F18696D0009FE16 /* ItemListDataProviderTests.swift */; };
 		74C9E8BF1F1EFC8E009C1166 /* ItemCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74C9E8BE1F1EFC8E009C1166 /* ItemCellTests.swift */; };
@@ -50,7 +53,10 @@
 		7466D54C1F148393005746D0 /* LocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTests.swift; sourceTree = "<group>"; };
 		7466D54E1F148763005746D0 /* ItemManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemManagerTests.swift; sourceTree = "<group>"; };
 		7466D5501F14883A005746D0 /* ItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemManager.swift; sourceTree = "<group>"; };
+		746F946E1F2053EA00A45E70 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		747126DD1F1C575300F270B2 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		7476B1021F204CE8002F8BCC /* DetailViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewControllerTests.swift; sourceTree = "<group>"; };
+		7476B1041F204D95002F8BCC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		7495006A1F1864FC0009FE16 /* ItemListDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListDataProvider.swift; sourceTree = "<group>"; };
 		7495006C1F18696D0009FE16 /* ItemListDataProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListDataProviderTests.swift; sourceTree = "<group>"; };
 		74C9E8BE1F1EFC8E009C1166 /* ItemCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellTests.swift; sourceTree = "<group>"; };
@@ -63,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				746F946F1F2053EA00A45E70 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +89,7 @@
 				7460A28E1F13209300506C9C /* ToDo */,
 				7460A2A31F13209300506C9C /* ToDoTests */,
 				7460A28D1F13209300506C9C /* Products */,
+				746F946D1F2053EA00A45E70 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,12 +146,21 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		746F946D1F2053EA00A45E70 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				746F946E1F2053EA00A45E70 /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		74E8B15C1F1721B00020C009 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				74E8B15D1F1721B00020C009 /* ItemListViewControllerTest.swift */,
 				7495006C1F18696D0009FE16 /* ItemListDataProviderTests.swift */,
 				74C9E8BE1F1EFC8E009C1166 /* ItemCellTests.swift */,
+				7476B1021F204CE8002F8BCC /* DetailViewControllerTests.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -154,6 +171,7 @@
 				74E8B15F1F1722B30020C009 /* ItemListViewController.swift */,
 				7495006A1F1864FC0009FE16 /* ItemListDataProvider.swift */,
 				747126DD1F1C575300F270B2 /* ItemCell.swift */,
+				7476B1041F204D95002F8BCC /* DetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -208,6 +226,11 @@
 				TargetAttributes = {
 					7460A28B1F13209300506C9C = {
 						CreatedOnToolsVersion = 9.0;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					7460A29F1F13209300506C9C = {
 						CreatedOnToolsVersion = 9.0;
@@ -265,6 +288,7 @@
 				7466D54B1F1481E8005746D0 /* Location.swift in Sources */,
 				747126DE1F1C575300F270B2 /* ItemCell.swift in Sources */,
 				7460A2B41F13269400506C9C /* ToDoItem.swift in Sources */,
+				7476B1051F204D95002F8BCC /* DetailViewController.swift in Sources */,
 				74E8B1601F1722B30020C009 /* ItemListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -277,6 +301,7 @@
 				7495006D1F18696D0009FE16 /* ItemListDataProviderTests.swift in Sources */,
 				7466D54F1F148763005746D0 /* ItemManagerTests.swift in Sources */,
 				7466D54D1F148393005746D0 /* LocationTests.swift in Sources */,
+				7476B1031F204CE8002F8BCC /* DetailViewControllerTests.swift in Sources */,
 				745089AA1F17242300C4900A /* ItemListViewControllerTest.swift in Sources */,
 				7460A2B01F13253B00506C9C /* ToDoItemTests.swift in Sources */,
 			);
