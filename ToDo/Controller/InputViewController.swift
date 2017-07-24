@@ -37,7 +37,7 @@ class InputViewController: UIViewController {
     
     // MARK: - Actions
     
-    func save() {
+    @IBAction func save() {
         
         guard let titleString = titleTextField.text, !titleString.isEmpty else {
             return
@@ -58,10 +58,19 @@ class InputViewController: UIViewController {
                     
                     let placeMarker = placeMarks?.first
                     
-                    let item = ToDoItem(title: titleString, itemDescription: descriptionString, timestamp: date?.timeIntervalSince1970, location: Location(name: locationName, coordinate: placeMarker?.location?.coordinate))
+                    let location = Location(
+                        name: locationName,
+                        coordinate: placeMarker?.location?.coordinate
+                    )
+                    
+                    let item = ToDoItem(
+                        title: titleString,
+                        itemDescription: descriptionString,
+                        timestamp: date?.timeIntervalSince1970,
+                        location: location
+                    )
                     
                     self.itemManager?.add(item)
-                    
                 }
             }
         }

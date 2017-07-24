@@ -83,10 +83,26 @@ class InputViewControllerTests: XCTestCase {
         
         let item = sut.itemManager?.item(at: 0)
         
-        let testItem = ToDoItem(title: "Foo", itemDescription: "Baz", timestamp: timestamp, location: Location(name: "Bar", coordinate: coordinate))
+        let location = Location(name: "Bar", coordinate: coordinate)
+        let testItem = ToDoItem(
+            title: "Foo",
+            itemDescription: "Baz",
+            timestamp: timestamp,
+            location: location
+        )
         
         XCTAssertEqual(item, testItem)
         
+    }
+    
+    func test_SaveButtonHasSaveAction() {
+        let saveButton = sut.saveButton
+        
+        guard let actions = saveButton?.actions(forTarget: sut, forControlEvent: .touchUpInside) else {
+            XCTFail(); return
+        }
+        
+        XCTAssertTrue(actions.contains("save"))
     }
     
 }

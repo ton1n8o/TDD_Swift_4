@@ -191,6 +191,9 @@
                                 <rect key="frame" x="238" y="381" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="save" destination="7Qf-0i-FSk" eventType="touchUpInside" id="LHD-aK-bTp"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZL9-av-vis">
                                 <rect key="frame" x="71" y="381" width="46" height="30"/>
