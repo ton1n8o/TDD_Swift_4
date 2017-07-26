@@ -30,15 +30,34 @@ class APIClientTests: XCTestCase {
             (token: Token?, error: Error?) in
         }
         
-        sut.loginUser(withName: "dasdom", password: "1234", completion: completion)
+        sut.loginUser(withName: "dasdöm", password: "%&34", completion: completion)
         
         guard let url = mockURLSession.url else {
             XCTFail(); return
         }
+        
+        let allowedCharacters = CharacterSet(charactersIn: "/%&=?$#+-~@<>|\\*,.()[]{}^!").inverted
+        
+        guard let expectedUserName = "dasdöm".addingPercentEncoding(withAllowedCharacters: allowedCharacters) else {
+            fatalError()
+        }
+
+        guard let expectedPassword = "%&34".addingPercentEncoding(withAllowedCharacters: allowedCharacters) else {
+            fatalError()
+        }
+        
         let urlComponents = NSURLComponents(url: url, resolvingAgainstBaseURL: true)
         XCTAssertEqual(urlComponents?.host, "awesometodos.com")
         XCTAssertEqual(urlComponents?.path, "/login")
-        XCTAssertEqual(urlComponents?.query, "username=dasdom&password=1234")
+        XCTAssertEqual(urlComponents?.percentEncodedQuery, "username=\(expectedUserName)&password=\(expectedPassword)")
+        
+        // another possible test
+//        let qiName = URLQueryItem(name: "username", value: expectedUserName)
+//        let qiPassword = URLQueryItem(name: "password", value: expectedPassword)
+        
+//        XCTAssertTrue(urlComponents?.queryItems?.contains(qiPassword) ?? false)
+//        XCTAssertTrue(urlComponents?.queryItems?.contains(qiName) ?? false)
+        
     }
     
 }
