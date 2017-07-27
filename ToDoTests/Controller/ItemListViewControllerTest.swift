@@ -44,5 +44,48 @@ class ItemListViewControllerTest: XCTestCase {
         XCTAssertEqual(sut.tableView?.dataSource as? ItemListDataProvider,
                        sut.tableView?.delegate as? ItemListDataProvider)
     }
+    
+    func test_ItemListViewController_HasAddBarButtonWithSelfAsTarget() {
+        let target = sut.navigationItem.rightBarButtonItem?.target
+        XCTAssertEqual(target as? UIViewController, sut)
+    }
+    
+    func test_AddItem_PresentsAddItemViewController() {
+        XCTAssertNil(sut.presentedViewController)
+        
+        configRootView()
+        
+        XCTAssertNotNil(sut.presentedViewController)
+        XCTAssertTrue(sut.presentedViewController is InputViewController)
+        let inputViewController = sut.presentedViewController as! InputViewController
+        XCTAssertNotNil(inputViewController.titleTextField)
+    }
+    
+    func testItemListVC_SharesItemManagerWithInputVC() {
+        
+        configRootView()
+        
+        guard let inputViewController = sut.presentedViewController as? InputViewController else {
+            XCTFail(); return
+        }
+        
+        guard let inputItemManager = inputViewController.itemManager else {
+            XCTFail(); return
+        }
+        
+        XCTAssertTrue(sut.itemManager === inputItemManager)
+        
+    }
+    
+    func configRootView() {
+        guard let addButton = sut.navigationItem.rightBarButtonItem else {
+            XCTFail(); return
+        }
+        guard let action = addButton.action else { XCTFail(); return }
+        
+        UIApplication.shared.keyWindow?.rootViewController = sut
+        
+        sut.performSelector(onMainThread: action, with: addButton, waitUntilDone: true)
+    }
 
 }

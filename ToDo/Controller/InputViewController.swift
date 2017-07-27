@@ -53,8 +53,7 @@ class InputViewController: UIViewController {
         let descriptionString = descriptionTextField.text
         if let locationName = locationTextField.text, !locationName.isEmpty {
             if let address = addressTextField.text, !address.isEmpty {
-                geocoder.geocodeAddressString(address) {
-                    [unowned self] (placeMarks, error) -> Void in
+                geocoder.geocodeAddressString(address) { [weak self] (placeMarks, error) -> Void in
                     
                     let placeMarker = placeMarks?.first
                     
@@ -70,9 +69,11 @@ class InputViewController: UIViewController {
                         location: location
                     )
                     
-                    self.itemManager?.add(item)
+                    self?.itemManager?.add(item)
                 }
             }
         }
+        
+        dismiss(animated: true)
     }
 }

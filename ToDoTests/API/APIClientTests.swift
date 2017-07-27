@@ -49,6 +49,7 @@ class APIClientTests: XCTestCase {
         let urlComponents = NSURLComponents(url: url, resolvingAgainstBaseURL: true)
         XCTAssertEqual(urlComponents?.host, "awesometodos.com")
         XCTAssertEqual(urlComponents?.path, "/login")
+        
         XCTAssertEqual(urlComponents?.percentEncodedQuery, "username=\(expectedUserName)&password=\(expectedPassword)")
         
         // another possible test

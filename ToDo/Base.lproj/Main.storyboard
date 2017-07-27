@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13156.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gIo-iL-53F">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13137.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,12 +16,12 @@
                         <viewControllerLayoutGuide type="top" id="SsR-01-rJy"/>
                         <viewControllerLayoutGuide type="bottom" id="4Q2-D4-oX5"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="bqM-i0-Ecn">
+                    <view key="view" contentMode="scaleToFill" id="bqM-i0-Ecn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mK2-St-Sho">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" id="mx0-8r-737" customClass="ItemCell" customModule="ToDo" customModuleProvider="target">
@@ -71,6 +71,13 @@
                             <constraint firstItem="mK2-St-Sho" firstAttribute="top" secondItem="SsR-01-rJy" secondAttribute="bottom" id="kZe-mM-mi6"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Mfr-bp-0jx">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="4vl-XT-xP2">
+                            <connections>
+                                <action selector="addItem:" destination="SzR-yR-UL4" id="73M-RD-ffX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="dataProvider" destination="L5r-uc-wPU" id="7he-Se-F4w"/>
                         <outlet property="tableView" destination="mK2-St-Sho" id="nHp-sL-sZQ"/>
@@ -79,7 +86,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5SN-gD-mnw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <customObject id="L5r-uc-wPU" customClass="ItemListDataProvider" customModule="ToDo" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="-297" y="153"/>
+            <point key="canvasLocation" x="65" y="152"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="h4p-Lc-fWP">
@@ -89,7 +96,7 @@
                         <viewControllerLayoutGuide type="top" id="Bt3-OY-FVR"/>
                         <viewControllerLayoutGuide type="bottom" id="OZT-f8-k0k"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="gLr-NR-QfS">
+                    <view key="view" contentMode="scaleToFill" id="gLr-NR-QfS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -138,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zks-RG-HET" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="449" y="152"/>
+            <point key="canvasLocation" x="788" y="151.57421289355324"/>
         </scene>
         <!--Input View Controller-->
         <scene sceneID="vOi-XI-3Sf">
@@ -148,7 +155,7 @@
                         <viewControllerLayoutGuide type="top" id="vAQ-0p-b6a"/>
                         <viewControllerLayoutGuide type="bottom" id="5AO-Cn-9vF"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="YES" id="nc8-Xs-Yd4">
+                    <view key="view" contentMode="scaleToFill" id="nc8-Xs-Yd4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -215,7 +222,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17q-y6-wKE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1176.8" y="151.57421289355324"/>
+            <point key="canvasLocation" x="1516" y="151.57421289355324"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Naf-J7-aed">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gIo-iL-53F" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zcx-fK-4eQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="SzR-yR-UL4" kind="relationship" relationship="rootViewController" id="tMh-b5-jbt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Amy-Qg-FsO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-700" y="152"/>
         </scene>
     </scenes>
 </document>
