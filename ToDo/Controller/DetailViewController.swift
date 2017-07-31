@@ -30,7 +30,7 @@ class DetailViewController: UIViewController {
         
         guard let itemInfo = itemInfo else { return }
         
-        let item = itemInfo.0.item(at: itemInfo.1)
+        let item = itemInfo.itemManager.item(at: itemInfo.index)
         
         titleLabel.text = item.title
         placeLabel.text = item.location?.name

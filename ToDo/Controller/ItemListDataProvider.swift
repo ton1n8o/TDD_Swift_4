@@ -84,6 +84,19 @@ ItemManagerSettable {
         return buttonTitle
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let itemSelected = Section(rawValue: indexPath.section) else {
+            fatalError()
+        }
+        switch itemSelected {
+        case .toDo:
+            let notification = NSNotification.Name.init("ItemSelectionNotification")
+            NotificationCenter.default.post(name: notification, object: self, userInfo: ["index": indexPath.row])
+        default:
+            break
+        }
+    }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         guard let section = Section(rawValue: indexPath.section) else {
