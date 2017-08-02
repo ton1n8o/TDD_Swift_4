@@ -25,6 +25,7 @@ class InputViewControllerTests: XCTestCase {
     
     override func tearDown() {
         super.tearDown()
+        sut.itemManager?.removeAll()
     }
     
     func test_HasTitleTextField() {
