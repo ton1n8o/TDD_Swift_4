@@ -54,7 +54,7 @@ class InputViewController: UIViewController {
         if let locationName = locationTextField.text, !locationName.isEmpty {
             if let address = addressTextField.text, !address.isEmpty {
                 // TODO: it worth trying with [weak self]
-                geocoder.geocodeAddressString(address) {  (placeMarks, error) -> Void in
+                geocoder.geocodeAddressString(address) {  [unowned self] (placeMarks, error) -> Void in
                     
                     let placeMarker = placeMarks?.first
                     
@@ -70,14 +70,20 @@ class InputViewController: UIViewController {
                         location: location
                     )
                     
-                    self.itemManager?.add(item)
+                    DispatchQueue.main.async {
+                        self.itemManager?.add(item)
+                        self.dismiss(animated: true)
+                    }
                 }
             } else {
                 let item = ToDoItem(title: titleString, itemDescription: descriptionString, timestamp: date?.timeIntervalSince1970, location: nil)
                 self.itemManager?.add(item)
+                self.dismiss(animated: true)
             }
+        } else {
+            let item = ToDoItem(title: titleString, itemDescription: descriptionString, timestamp: date?.timeIntervalSince1970, location: nil)
+            self.itemManager?.add(item)
+            self.dismiss(animated: true)
         }
-        
-        dismiss(animated: true)
     }
 }
